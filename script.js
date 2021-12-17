@@ -10,28 +10,49 @@ function computerPlay(a, b, c) { //Selects a random choice out of function param
     return random
 }
 
-function playRound(a, b){
+function playRound(a, b){ //Prompts user for a choice and then compares it to the computer's random selection. Then updates the score variable depending on outcome.
     let computerSelection = computerPlay('rock', 'paper', 'scissors')
-    let playerSelection = prompt('Enter rock, paper, or scissors')
-    if ((computerSelection === 'rock') && (playerSelection === 'scissors')) {console.log('You Lose! Rock beats scissors.');return computerScore = (computerScore + 1)}
-    else if ((computerSelection === 'rock') && (playerSelection === 'rock')) {console.log('It\'s a tie! You both chose rock!')}
-    else if ((computerSelection === 'rock') && (playerSelection === 'paper')) {console.log('You Win! Paper beats rock!');return playerScore = (playerScore +1)}
-    else if ((computerSelection === 'scissors') && (playerSelection === 'paper')) {console.log('You Lose! Scissors beats paper!');return computerScore = (computerScore + 1)}
-    else if ((computerSelection === 'scissors') && (playerSelection === 'rock')) {console.log('You Win! Rock beats scissors!');return playerScore = (playerScore +1)}
-    else if ((computerSelection === 'scissors') && (playerSelection === 'scissors')) {console.log('It\'s a tie! You both chose scissors!')}
-    else if ((computerSelection === 'paper') && (playerSelection === 'rock')) {console.log('You Lose! Paper beats rock!');return computerScore = (computerScore + 1)}
-    else if ((computerSelection === 'paper') && (playerSelection === 'scissors')) {console.log('You Win! Scissors beats paper!');return playerScore = (playerScore +1)}
-    else if ((computerSelection === 'paper') && (playerSelection === 'paper')) {console.log('It\'s a tie! You both chose paper!')}
-    }
+    let playerSelection = prompt('Enter rock, paper, or scissors').toLowerCase()
+    if (computerSelection === playerSelection)
+    return `The result is a tie! You both chose ${playerSelection}!`
+    
+    else if (computerSelection === 'rock' && playerSelection === 'scissors' || 
+    computerSelection === 'paper' && playerSelection === 'rock' || 
+    computerSelection === 'scissors' && playerSelection === 'paper'){computerScore++
+    return `You lose! ${computerSelection} beats ${playerSelection}`}
+    
+    else if (computerSelection === 'rock' && playerSelection === 'paper' || 
+    computerSelection === 'scissors' && playerSelection === 'rock' || 
+    computerSelection === 'paper' && playerSelection === 'scissors'){playerScore++
+    return `You Win! ${playerSelection} beats ${computerSelection}`}
+}
 
 
 
-function game(){
-    playRound()
-    playRound()
-    playRound()
-    playRound()
-    playRound()
+
+
+    // if ((computerSelection === 'rock') && (playerSelection === 'scissors')) {console.log('You Lose! Rock beats scissors.');return computerScore = (computerScore + 1)}
+    // else if ((computerSelection === 'rock') && (playerSelection === 'rock')) {console.log('It\'s a tie! You both chose rock!')}
+    // else if ((computerSelection === 'rock') && (playerSelection === 'paper')) {console.log('You Win! Paper beats rock!');return playerScore = (playerScore +1)}
+    // else if ((computerSelection === 'scissors') && (playerSelection === 'paper')) {console.log('You Lose! Scissors beats paper!');return computerScore = (computerScore + 1)}
+    // else if ((computerSelection === 'scissors') && (playerSelection === 'rock')) {console.log('You Win! Rock beats scissors!');return playerScore = (playerScore +1)}
+    // else if ((computerSelection === 'scissors') && (playerSelection === 'scissors')) {console.log('It\'s a tie! You both chose scissors!')}
+    // else if ((computerSelection === 'paper') && (playerSelection === 'rock')) {console.log('You Lose! Paper beats rock!');return computerScore = (computerScore + 1)}
+    // else if ((computerSelection === 'paper') && (playerSelection === 'scissors')) {console.log('You Win! Scissors beats paper!');return playerScore = (playerScore +1)}
+    // else if ((computerSelection === 'paper') && (playerSelection === 'paper')) {console.log('It\'s a tie! You both chose paper!')}
+    // }
+
+
+
+function game(){// runs playRound 5 times then returns the computer and player scores.
+    console.log(playRound())
+    console.log(playRound())
+    console.log(playRound())
+    console.log(playRound())
+    console.log(playRound())
     console.log(`Computer score ${computerScore}, Player score ${playerScore}`)
+    if (computerScore > playerScore){console.log('The computer wins!')}
+    else if (playerScore > computerScore){console.log('You Win!')}
+    else {console.log('The match ends in a tie!')}
 }
 game()
