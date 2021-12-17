@@ -14,17 +14,17 @@ function playRound(a, b){ //Prompts user for a choice and then compares it to th
     let computerSelection = computerPlay('rock', 'paper', 'scissors')
     let playerSelection = prompt('Enter rock, paper, or scissors').toLowerCase()
     if (computerSelection === playerSelection)
-    return `The result is a tie! You both chose ${playerSelection}!`
+    return `The result is a tie! You both chose ${playerSelection}!` // if computer and player select the same option, the result is a tie and neither score increments.
     
     else if (computerSelection === 'rock' && playerSelection === 'scissors' || 
     computerSelection === 'paper' && playerSelection === 'rock' || 
     computerSelection === 'scissors' && playerSelection === 'paper'){computerScore++
-    return `You lose! ${computerSelection} beats ${playerSelection}`}
+    return `You lose! ${computerSelection} beats ${playerSelection}`} //if the computer wins, reteurns a string that says so and increments the computer score.
     
     else if (computerSelection === 'rock' && playerSelection === 'paper' || 
     computerSelection === 'scissors' && playerSelection === 'rock' || 
     computerSelection === 'paper' && playerSelection === 'scissors'){playerScore++
-    return `You Win! ${playerSelection} beats ${computerSelection}`}
+    return `You Win! ${playerSelection} beats ${computerSelection}`} //if the player wins, returns a string that says so and increments the player score.
 }
 
 
@@ -44,7 +44,7 @@ function playRound(a, b){ //Prompts user for a choice and then compares it to th
 
 
 
-function game(){// runs playRound 5 times then returns the computer and player scores.
+function game(){// runs playRound 5 times then returns the computer and player scores, announces a winner or a tie game.
     console.log(playRound())
     console.log(playRound())
     console.log(playRound())
