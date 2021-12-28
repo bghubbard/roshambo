@@ -2,19 +2,13 @@ let playerScore = 0
 let computerScore = 0
 
 
-
-
 function computerPlay() { //Selects a random choice out of function parameters a, b, c
     var arr = ['rock', 'paper', 'scissors']
     var random = arr[Math.floor(Math.random() * arr.length)]
     return random
-}
+};
 
-function playerChoice(a){
-    return String(a).toLowerCase()
-}
-
-function playRound(computerSelection, playerSelection){ //Prompts user for a choice and then compares it to the computer's random selection. Then updates the score variable depending on outcome.
+function playRound(computerSelection, playerSelection){ //Compares user choice to the computer's random selection. Then updates the score variable depending on outcome.
     
     
     if (computerSelection === playerSelection)
@@ -29,7 +23,8 @@ function playRound(computerSelection, playerSelection){ //Prompts user for a cho
         computerSelection === 'scissors' && playerSelection === 'rock' || 
         computerSelection === 'paper' && playerSelection === 'scissors'){playerScore++
         return `You Win! ${playerSelection} beats ${computerSelection}`} //if the player wins, returns a string that says so and increments the player score.
-}
+};
+
 const rock = document.querySelector('.rock');
 rock.addEventListener("click", function (event) {
     playRound(computerPlay(), 'rock');
@@ -42,12 +37,3 @@ const scissors = document.querySelector('.scissors')
 scissors.addEventListener("click", function (event) {
     playRound(computerPlay(), 'scissors');
 });
-
-
-function game(){// runs playRound 5 times then returns the computer and player scores, announces a winner or a tie game.
-    console.log(`Computer score ${computerScore}, Player score ${playerScore}`)
-    if (computerScore > playerScore){console.log('The computer wins!')}
-    else if (playerScore > computerScore){console.log('You Win!')}
-    else {console.log('The match ends in a tie!')}
-}
-game()
