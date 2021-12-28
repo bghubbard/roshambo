@@ -4,15 +4,19 @@ let computerScore = 0
 
 
 
-function computerPlay(a, b, c) { //Selects a random choice out of function parameters a, b, c
-    var arr = [a, b, c]
+function computerPlay() { //Selects a random choice out of function parameters a, b, c
+    var arr = ['rock', 'paper', 'scissors']
     var random = arr[Math.floor(Math.random() * arr.length)]
     return random
 }
 
-function playRound(){ //Prompts user for a choice and then compares it to the computer's random selection. Then updates the score variable depending on outcome.
-    let computerSelection = computerPlay('rock', 'paper', 'scissors')
-    let playerSelection = prompt('Enter rock, paper, or scissors').toLowerCase()
+function playerChoice(a){
+    return String(a).toLowerCase()
+}
+
+function playRound(computerSelection, playerSelection){ //Prompts user for a choice and then compares it to the computer's random selection. Then updates the score variable depending on outcome.
+    
+    
     if (computerSelection === playerSelection)
     return `The result is a tie! You both chose ${playerSelection}!` // if computer and player select the same option, the result is a tie and neither score increments.
     
@@ -26,16 +30,21 @@ function playRound(){ //Prompts user for a choice and then compares it to the co
         computerSelection === 'paper' && playerSelection === 'scissors'){playerScore++
         return `You Win! ${playerSelection} beats ${computerSelection}`} //if the player wins, returns a string that says so and increments the player score.
 }
-
-
+const rock = document.querySelector('.rock');
+rock.addEventListener("click", function (event) {
+    playRound(computerPlay(), 'rock');
+});
+const paper = document.querySelector('.paper')
+paper.addEventListener("click", function (event) {
+    playRound(computerPlay(), 'paper');
+});
+const scissors = document.querySelector('.scissors')
+scissors.addEventListener("click", function (event) {
+    playRound(computerPlay(), 'scissors');
+});
 
 
 function game(){// runs playRound 5 times then returns the computer and player scores, announces a winner or a tie game.
-    console.log(playRound())
-    console.log(playRound())
-    console.log(playRound())
-    console.log(playRound())
-    console.log(playRound())
     console.log(`Computer score ${computerScore}, Player score ${playerScore}`)
     if (computerScore > playerScore){console.log('The computer wins!')}
     else if (playerScore > computerScore){console.log('You Win!')}
