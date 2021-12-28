@@ -25,15 +25,26 @@ function playRound(computerSelection, playerSelection){ //Compares user choice t
         return `You Win! ${playerSelection} beats ${computerSelection}`} //if the player wins, returns a string that says so and increments the player score.
 };
 
+function updateScoreText() {
+    paraText.textContent =`Player Score: ${playerScore}, Computer Score: ${computerScore}.`
+}
+
 const rock = document.querySelector('.rock');
 rock.addEventListener("click", function (event) {
     playRound(computerPlay(), 'rock');
+    updateScoreText();
 });
 const paper = document.querySelector('.paper')
 paper.addEventListener("click", function (event) {
     playRound(computerPlay(), 'paper');
+    updateScoreText();
 });
 const scissors = document.querySelector('.scissors')
 scissors.addEventListener("click", function (event) {
     playRound(computerPlay(), 'scissors');
+    updateScoreText();
 });
+
+const results = document.querySelector('.p1');
+const paraText = document.createTextNode(`Player Score: ${playerScore}, Computer Score: ${computerScore}. `);
+results.appendChild(paraText)
