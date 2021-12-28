@@ -26,7 +26,14 @@ function playRound(computerSelection, playerSelection){ //Compares user choice t
 };
 
 function updateScoreText() {
-    paraText.textContent =`Player Score: ${playerScore}, Computer Score: ${computerScore}.`
+    if (playerScore < 5 && computerScore < 5)
+    paraText.textContent =`Player Score: ${playerScore}, Computer Score: ${computerScore}.`;
+    else if (playerScore == 5) {
+        paraText.textContent = 'Congratulations, you\'ve won!';
+    }
+    else if (computerScore == 5) {
+        paraText.textContent = 'Oh No! The computer won this round.';
+    }
 }
 
 const rock = document.querySelector('.rock');
