@@ -29,10 +29,12 @@ function updateScoreText() {
     if (playerScore < 5 && computerScore < 5)
     paraText.textContent =`Player Score: ${playerScore}, Computer Score: ${computerScore}.`;
     else if (playerScore == 5) {
-        paraText.textContent = 'Congratulations, you\'ve won!';
+        paraText.textContent = 'Congratulations, you\'ve won the game!';
+        outcome.textContent = ' ';
     }
     else if (computerScore == 5) {
-        paraText.textContent = 'Oh No! The computer won this round.';
+        paraText.textContent = 'Oh No! The computer won the game.';
+        outcome.textContent = ' ';
     }
 }
 
