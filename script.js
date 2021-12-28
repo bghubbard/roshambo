@@ -12,17 +12,17 @@ function playRound(computerSelection, playerSelection){ //Compares user choice t
     
     
     if (computerSelection === playerSelection)
-    return `The result is a tie! You both chose ${playerSelection}!` // if computer and player select the same option, the result is a tie and neither score increments.
+    return `The result is a tie! You both chose ${playerSelection}.` // if computer and player select the same option, the result is a tie and neither score increments.
     
     else if (computerSelection === 'rock' && playerSelection === 'scissors' || 
         computerSelection === 'paper' && playerSelection === 'rock' || 
         computerSelection === 'scissors' && playerSelection === 'paper'){computerScore++
-        return `You lose! ${computerSelection} beats ${playerSelection}`} //if the computer wins, reteurns a string that says so and increments the computer score.
+        return `You lose! ${computerSelection} beats ${playerSelection}.`} //if the computer wins, reteurns a string that says so and increments the computer score.
     
     else if (computerSelection === 'rock' && playerSelection === 'paper' || 
         computerSelection === 'scissors' && playerSelection === 'rock' || 
         computerSelection === 'paper' && playerSelection === 'scissors'){playerScore++
-        return `You Win! ${playerSelection} beats ${computerSelection}`} //if the player wins, returns a string that says so and increments the player score.
+        return `You Win! ${playerSelection} beats ${computerSelection}.`} //if the player wins, returns a string that says so and increments the player score.
 };
 
 function updateScoreText() {
@@ -38,20 +38,23 @@ function updateScoreText() {
 
 const rock = document.querySelector('.rock');
 rock.addEventListener("click", function (event) {
-    playRound(computerPlay(), 'rock');
+    outcome.textContent = playRound(computerPlay(), 'rock');
     updateScoreText();
 });
 const paper = document.querySelector('.paper')
 paper.addEventListener("click", function (event) {
-    playRound(computerPlay(), 'paper');
+    outcome.textContent = playRound(computerPlay(), 'paper');
     updateScoreText();
 });
 const scissors = document.querySelector('.scissors')
 scissors.addEventListener("click", function (event) {
-    playRound(computerPlay(), 'scissors');
+    outcome.textContent = playRound(computerPlay(), 'scissors');
     updateScoreText();
 });
 
-const results = document.querySelector('.p1');
-const paraText = document.createTextNode(`Player Score: ${playerScore}, Computer Score: ${computerScore}. `);
-results.appendChild(paraText)
+const score = document.querySelector('.p1');
+const paraText = document.createTextNode(`Player Score: ${playerScore}, Computer Score: ${computerScore}.`);
+score.appendChild(paraText)
+const div = document.querySelector('.results')
+const outcome = document.createTextNode('Click any button to begin.');
+div.appendChild(outcome);
